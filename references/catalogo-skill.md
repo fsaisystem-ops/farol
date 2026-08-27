@@ -28,9 +28,18 @@ URLs oficiais por ID: `references/fontes-web.md`. Abrir na web **só** para Crí
 | **Alto** | Caminho claro para injeção, comando, ferramenta escondida, rede/API não declarada, ou arquivo externo virando ordem |
 | **Médio** | Permissão demais, pasta ampla, dependência sem origem, dado de cliente/pessoa indo para chat/HTML sem necessidade |
 | **Baixo** | Falta registro do que rodou, falta confirmação em escrita de baixo impacto, texto vago de permissão |
-| **Atende** | O controle da Microsoft já está escrito na skill (regra, passo ou proibição observável) |
+| **Atende** | O controle da Microsoft **já está escrito** na skill (regra, passo ou proibição observável) |
 
-Todo MCP01–10 e todo MUST entram no relatório. Se não se aplica: nível **Atende** com uma frase do porquê (não omitir o ID).
+No `apr.json`, `status` é separado do nível:
+
+- `open` — furo (`severity` vale)
+- `pass` — Atende de verdade
+- `not_applicable` — a ameaça não cabe nesta skill (ex.: MUST-04 se não há sessão)
+- `not_verified` — não deu para olhar
+
+**Atende** não mistura os dois últimos. Sem trecho para Crítico/Alto: `not_verified` ou `open`+Baixo com a lacuna — nunca fingir Atende.
+
+Todo MCP01–10 e todo MUST entram no relatório. Nenhum ID some.
 
 ---
 
@@ -81,7 +90,7 @@ Texto da Microsoft (controles / práticas 2025):
 
 **Controle Microsoft:** RNG criptográfico; vínculo `<user_id>:<session_id>`; HTTPS; expirar/rotacionar.
 
-**Nível típico:** Alto se persiste sessão; Atende se a skill não lida com sessão.
+**Nível típico:** Alto se persiste sessão; `not_applicable` se a skill não lida com sessão.
 
 ---
 
@@ -240,7 +249,7 @@ Usar **além** do Top 10, com citação do README / controles:
 
 ## Regras de evidência
 
-- Sem trecho, não marca Crítico/Alto. Marca “não observado” e **Atende** ou Baixo com a lacuna (“a skill não fala disso, e precisava”).
+- Sem trecho, não marca Crítico/Alto. Marca `not_verified` ou Baixo com a lacuna (“a skill não fala disso, e precisava”). Não use Atende para “não deu para olhar” nem para “não se aplica”.
 - Não copiar valor de segredo para o HTML.
 - Não pontuar “Azure Key Vault” como obrigação se a skill só lê arquivo local — o controle vira: “não guardar segredo no markdown”.
 - Mitigação tem que ser aplicável à skill (arquivo de instrução + scripts), não “implantar Entra ID na empresa” salvo se a skill realmente autentica usuário em API.

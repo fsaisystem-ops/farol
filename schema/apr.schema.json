@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fsaisystem-ops/farol/schema/apr.schema.json",
+  "title": "Farol APR",
+  "type": "object",
+  "required": [
+    "skill",
+    "skill_path",
+    "date",
+    "farol_version",
+    "catalog_spec",
+    "areas",
+    "risk_level",
+    "complete",
+    "counts",
+    "findings",
+    "plan",
+    "impact",
+    "scanner"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "skill": { "type": "string" },
+    "skill_path": { "type": "string" },
+    "date": { "type": "string" },
+    "farol_version": { "type": "string" },
+    "catalog_spec": { "type": "string" },
+    "areas": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["critico", "alto", "medio", "baixo", "atende"]
+    },
+    "complete": { "type": "boolean" },
+    "counts": {
+      "type": "object",
+      "required": ["critico", "alto", "medio", "baixo", "atende"],
+      "properties": {
+        "critico": { "type": "integer", "minimum": 0 },
+        "alto": { "type": "integer", "minimum": 0 },
+        "medio": { "type": "integer", "minimum": 0 },
+        "baixo": { "type": "integer", "minimum": 0 },
+        "atende": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "status", "file", "evidence"],
+        "properties": {
+          "id": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["critico", "alto", "medio", "baixo"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["open", "pass", "not_applicable", "not_verified"]
+          },
+          "file": { "type": "string" },
+          "line": { "type": ["integer", "null"] },
+          "evidence": { "type": "string" },
+          "title": { "type": "string" },
+          "fix": { "type": "string" }
+        }
+      }
+    },
+    "plan": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "impact": {
+      "type": "object",
+      "required": ["same", "asks_or_refuses", "gain", "cost"],
+      "properties": {
+        "same": { "type": "string" },
+        "asks_or_refuses": { "type": "string" },
+        "gain": { "type": "string" },
+        "cost": { "type": "string" }
+      }
+    },
+    "scanner": {
+      "type": "object",
+      "required": ["ran", "version"],
+      "properties": {
+        "ran": { "type": "boolean" },
+        "version": { "type": "string" }
+      }
+    }
+  }
+}
