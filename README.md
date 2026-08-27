@@ -2,9 +2,19 @@
 
 ![Agente de IA conferindo um recado escrito](banner.jpg)
 
-Farol acende o risco **antes** de a skill nova sair. Você vai criar uma skill. Antes de dizer que ela está pronta, esta pasta manda parar, ler o arquivo e dizer o que pode dar ruim — e o que muda no seu dia se você aplicar a correção.
+Criamos skill para uma ação. Às vezes o recado traz junto coisa que não pedimos — e a IA obedece. O Farol lê essa skill e mostra o que pode comprometer nosso sistema e nossa IA. Sem isso, “pronto” e o furo vão no mesmo arquivo.
 
-Uma skill é um recado escrito para o agente. Se o recado manda guardar senha, abrir qualquer site ou obedecer o que estiver num PDF, o agente faz. Esta skill lê esse recado, cruza com uma lista de falhas (curso de segurança da Microsoft) e grava um HTML.
+## Para que serve
+
+Usamos o Farol quando vamos criar ou mexer numa skill. Ele lê o arquivo, aponta o risco, diz o que muda no dia a dia se aplicarmos a correção, e grava um HTML. A lista de furos vem da Microsoft; aplicamos isso no recado da skill, não num servidor.
+
+## O que ele não é
+
+Não é antivírus. Não trava o Windows. Não impede de escrever proposta ou buscar site. Só acende o que, no recado, pode mandar a IA fazer demais.
+
+## Quando usamos
+
+Skill nova. Skill que parecia inocente. Skill que lê PDF, busca na web, grava arquivo ou pega zip. Antes de chamar de pronta.
 
 O texto do relatório é em português do Brasil. Não cola a tradução do curso no cartão. Esta pasta **sozinha basta**: o tom da escrita vai junto, não depende de outra skill no disco.
 
