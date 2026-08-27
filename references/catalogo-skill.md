@@ -16,6 +16,8 @@ Não inventar ID. Se o achado não cabe em MUST nem MCP01–10, usar a seção *
 
 Área, metadado, imagem, SVG, Unicode, QR: `references/lentes.md`. A lente não cria ID novo; sobe o nível do MCP quando o canal é típico.
 
+URLs oficiais por ID: `references/fontes-web.md`. Abrir na web **só** para Crítico/Alto (ou se o local estiver raso). O link no texto da Microsoft não substitui o catálogo; é extra.
+
 ---
 
 ## Níveis da APR
