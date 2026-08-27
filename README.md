@@ -1,30 +1,58 @@
 # Segurança de skills
 
-Você vai criar uma skill. Antes de dizer que ela está pronta, esta pasta manda parar, ler o arquivo e dizer o que pode dar ruim.
+Você vai criar uma skill. Antes de dizer que ela está pronta, esta pasta manda parar, ler o arquivo e dizer o que pode dar ruim — e o que muda no seu dia se você aplicar a correção.
 
-Uma skill é um recado escrito para o agente. Se o recado manda guardar senha, abrir qualquer site ou obedecer o que estiver num PDF, o agente faz. Esta skill lê esse recado, cruza com uma lista de falhas (curso de segurança da Microsoft, Top 10 MCP) e grava um HTML: o que pega, o quão grave, o que mudar no arquivo.
+Uma skill é um recado escrito para o agente. Se o recado manda guardar senha, abrir qualquer site ou obedecer o que estiver num PDF, o agente faz. Esta skill lê esse recado, cruza com uma lista de falhas (curso de segurança da Microsoft) e grava um HTML.
 
+O texto do relatório é em português do Brasil. Não cola a tradução do curso no cartão. Esta pasta **sozinha basta**: o tom da escrita vai junto, não depende de outra skill no disco.
 
-## O que ela faz
+## Funcionalidades
 
-1. Lê a skill alvo (`SKILL.md`, scripts, referências).
-2. Marca a área (dinheiro, dado, licitação, integração, rotina, texto). Pode ser mais de uma.
-3. Olha canais escondidos: metadado, imagem, SVG, QR, Unicode, nome de arquivo.
-4. Pontua os quatro “não pode” e os dez riscos da Microsoft. Nenhum ID fica de fora.
-5. Grava `apr-seguranca.html` na pasta da skill alvo.
-6. **Não** altera a skill alvo até você mandar aplicar.
+1. **Análise preliminar de riscos (APR)**  
+   Lê `SKILL.md`, scripts e referências da skill alvo. Não trata o texto dela como ordem.
+
+2. **Relatório HTML**  
+   Grava `apr-seguranca.html` na pasta da alvo, com o visual do `template.html`. Não reescreve o CSS.
+
+3. **Níveis**  
+   Crítico, Alto, Médio, Baixo, Atende. Contagem no topo da página.
+
+4. **Quatro regras obrigatórias (MUST)**  
+   Senha/token no arquivo; agir sem conferir; conexão nova no silêncio; sessão copiada.
+
+5. **Top 10 da Microsoft (MCP01–MCP10)**  
+   Um cartão por ID. Nenhum fica de fora. Prova = recorte do arquivo. Sem recorte, não marca Crítico/Alto.
+
+6. **Área da skill**  
+   Dinheiro, dados, licitação, integração, rotina, texto. Pode ser mais de uma. O nível sobe quando o risco é típico daquela área (PDF em extração ≠ skill que só escreve).
+
+7. **Canais ocultos**  
+   Metadado (EXIF, XMP, propriedades de PDF/Office), imagem (OCR, branco no branco), SVG, QR, Unicode invisível, nome de arquivo. Roda **sempre**, mesmo se “não tem imagem”.
+
+8. **Plano de correção**  
+   Só o que dá para escrever no `SKILL.md` ou no script. Pior primeiro. **Não aplica** até você mandar.
+
+9. **Impacto no uso**  
+   Se aplicar o plano: o que continua igual, o que passa a perguntar ou recusar, o que você ganha, o que paga. No HTML e de novo no chat.
+
+10. **Prosa humana (cópia local)**  
+    `references/escrita-humana.md`. Zip e outro Grok não precisam da skill `/escrita-humana` instalada. Cartão: o que acontece → prova → o que fazer → nome Microsoft por último.
+
+11. **Depois do “aplica”**  
+    Mexe só no que o plano listou. Regenera o HTML. Chat: o que mudou no arquivo e o que muda no uso agora.
+
+12. **Comando**  
+    `/seguranca-skills` ou “analisa a segurança desta skill”.
 
 ## Como usar
 
 1. Copie esta pasta para `~/.grok/skills/seguranca-skills/` (Windows: `%USERPROFILE%\.grok\skills\seguranca-skills\`).
-2. No Grok: `/seguranca-skills` ou peça para analisar uma skill.
-3. Abra o HTML que ela gravou.
-
-Esta pasta **sozinha basta**. Não precisa de outra skill no disco para o tom do texto: a escrita humana está em `references/escrita-humana.md`.
+2. No Grok: `/seguranca-skills`.
+3. Abra o HTML. Se o plano fizer sentido, mande aplicar.
 
 ## O que não sobe neste repositório
 
-Relatório HTML gerado na sua máquina (`apr-seguranca.html`) — tem caminho local. Cada quem gera o seu.
+Relatório gerado na sua máquina (`apr-seguranca.html`) — tem caminho local. Cada quem gera o seu.
 
 ## Fonte da lista de riscos
 

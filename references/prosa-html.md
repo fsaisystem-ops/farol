@@ -58,4 +58,16 @@ Bom:
 - Proibido: markdown (`**`, `#`, ```) dentro do HTML; placeholder `__FOI_ESQUECIDO__`; tag sem fechar; copiar o modelo do cartão com “…” de exemplo.
 - Parágrafo = `<p>`. Prova = `<div class="prova">`. Nada de `<br><br><br>`.
 - Lead de seção: uma ou duas frases. Não um parágrafo de curso.
-- Chat depois do HTML: áreas, números, 3 piores, caminho. Mesma prosa. Sem aula.
+- Chat depois do HTML: áreas, números, 3 piores, o que muda no uso se aplicar, caminho. Mesma prosa. Sem aula.
+
+## O que muda no uso
+
+Quatro frases, no máximo um parágrafo cada. Sem jargão.
+
+- **Continua igual** — o trabalho (cotar, escrever proposta, postar no Discord).
+- **Passa a perguntar ou recusar** — o “sim” novo; o que o script barra.
+- **Ganha** — o que o PDF/zip/URL deixa de conseguir mandar.
+- **Paga** — um clique a mais, um caso que vira SEM FONTE, pasta obrigatória.
+
+Ruim: “Há um trade-off entre usabilidade e postura.”  
+Bom: “A cotação segue igual. Loja só http o script recusa. Você confirma o navegador neste endereço.”

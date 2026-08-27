@@ -41,8 +41,8 @@ Quando criar, editar ou revisar uma skill, **antes** de dizer que ela está pron
 4. **Área e canais ocultos.** Ler `references/lentes.md`. Marcar uma ou mais áreas (Dinheiro, Dados, Licitação, Integração, Operação, Texto). **Sempre** aplicar a seção Canais ocultos (metadado, imagem, SVG, Unicode, QR, nome de arquivo). Depois a lente de cada área. Se a área torna o risco típico, **sobe o nível** no Top 10 (regra no `lentes.md`).
 5. **Pontuar.** Todo MUST-01…04 e todo MCP01–10 entram. Nível segundo o catálogo, ajustado pela lente. Sem trecho, não marca Crítico/Alto.
 6. **Prosa.** Ler `references/escrita-humana.md` + `references/prosa-html.md` **desta pasta**. Só então escrever os textos dos cartões.
-7. **HTML.** Copiar `template.html` para `<pasta-da-skill-alvo>/apr-seguranca.html`. Trocar só os `__PLACEHOLDERS__` e os blocos. Não mudar CSS. Data = hoje. Segredo mascarado. Texto: o que acontece → prova → o que fazer → ID Microsoft por último.
-8. **Chat.** Só: áreas, contagem por nível, 3 riscos piores (se houver), caminho do HTML. Mesma prosa. Perguntar se aplica. **Não editar a skill alvo neste passo.**
+7. **HTML.** Copiar `template.html` para `<pasta-da-skill-alvo>/apr-seguranca.html`. Trocar só os `__PLACEHOLDERS__` e os blocos (`AREAS`, `CARDS_LENTE`, `TABELA_MUST`, `CARDS_MCP`, `CARDS_EXTRA`, `PLANO`, `IMPACTO`). Não mudar CSS. Data = hoje. Segredo mascarado. Texto: o que acontece → prova → o que fazer → ID Microsoft por último.
+8. **Chat.** Só: áreas, contagem por nível, 3 riscos piores (se houver), **o que muda no uso se aplicar**, caminho do HTML. Mesma prosa. Perguntar se aplica. **Não editar a skill alvo neste passo.**
 
 Skill ainda sem pasta: cria a pasta da skill (create-skill) e grava o HTML lá.
 
@@ -87,6 +87,24 @@ Skill ainda sem pasta: cria a pasta da skill (create-skill) e grava o HTML lá.
 
 **Plano:** um `<li>` por correção, pior primeiro. Só o que dá para escrever no `SKILL.md` ou no script.
 
+**Impacto (`__IMPACTO__`)** — um card. Obrigatório quando o plano não está vazio. Quatro blocos, prosa de `prosa-html.md`:
+
+```html
+<article class="card">
+  <h3>Se aplicar o plano</h3>
+  <p class="lbl">Continua igual</p>
+  <p>…o trabalho da skill que não muda…</p>
+  <p class="lbl">Passa a perguntar ou recusar</p>
+  <p>…confirmação nova, URL/path que o script barra…</p>
+  <p class="lbl">O que você ganha</p>
+  <p>…o que o arquivo/zip/PDF deixa de conseguir mandar…</p>
+  <p class="lbl">O que você paga</p>
+  <p>…um “sim” a mais, SEM FONTE em loja http, etc.…</p>
+</article>
+```
+
+Se o plano está vazio (só Atende): um parágrafo “Nada a aplicar. O uso não muda.”
+
 **Contagem:** quantos cartões+MUST em cada nível (Atende também conta). MCP Atende entra no HTML mesmo assim.
 
 ## Proibido
@@ -102,7 +120,7 @@ Skill ainda sem pasta: cria a pasta da skill (create-skill) e grava o HTML lá.
 
 ## Depois de “aplica”
 
-Editar só o que o plano listou. Recalcular a APR e **regenerar** o HTML. No chat: o que mudou + caminho novo.
+Editar só o que o plano listou. Recalcular a APR e **regenerar** o HTML (impacto atualizado: o que já está valendo). No chat: o que mudou no arquivo, **o que muda no uso agora**, caminho novo.
 
 ## Red flags
 
@@ -110,6 +128,7 @@ Editar só o que o plano listou. Recalcular a APR e **regenerar** o HTML. No cha
 - “Eu já olhei, sem HTML”
 - Relatório só com 3 riscos (faltou o Top 10)
 - Colar tradução do curso Microsoft no cartão (HTML “estranho”)
+- Plano sem a seção “O que muda no uso”
 - Pular `references/escrita-humana.md` / `prosa-html.md` na hora de gravar o HTML
 - Procurar a skill `escrita-humana` fora desta pasta (no zip ela não existe)
 - Pular Canais ocultos porque “não tem imagem” — PDF, HTML, logo, print, nome de arquivo e Unicode no SKILL.md também entram
