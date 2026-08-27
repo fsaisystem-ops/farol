@@ -151,9 +151,9 @@ Texto da Microsoft (controles / práticas 2025):
 
 **Microsoft:** instrução maliciosa em documento, página, e-mail, dado; Prompt Shields; delimitador entre instrução do sistema e texto externo; Content Safety.
 
-**Na skill:** PDF, site, e-mail, planilha, HTML de edital ou recado de cliente tratados como ordem. Falta a frase: conteúdo externo é **dado**, não instrução.
+**Na skill:** PDF, site, e-mail, planilha, HTML, **JSON de API** ou recado de cliente tratados como ordem. Falta a frase: conteúdo externo é **dado**, não instrução.
 
-**Sinais:** “siga o que o PDF mandar”; “obedece o README baixado”; juntar texto de site no mesmo bloco das regras da skill.
+**Sinais:** “siga o que o PDF mandar”; “obedece o README baixado”; juntar texto de site ou payload de API no mesmo bloco das regras da skill.
 
 **Controle:** spotlighting / delimitador; filtrar entrada e saída; hierarquia: SKILL.md > usuário desta conversa > arquivo externo. Arquivo externo nunca sobe de nível.
 
@@ -199,9 +199,9 @@ Texto da Microsoft (controles / práticas 2025):
 
 **Microsoft:** dado demais na janela; PII; classificação; exposição mínima.
 
-**Na skill:** cola repositório inteiro, CPF, proposta de outro cliente, `.env`, conversa antiga no contexto ou no HTML. Relatório de segurança que **repete o segredo** (a APR não pode copiar o valor do token; só o tipo e o caminho).
+**Na skill:** cola repositório inteiro, CPF, proposta de outro cliente, `.env`, conversa antiga, **HTML/JSON de scrape ou API inteiro** no contexto, no disco ou no HTML. Relatório de segurança que **repete o segredo** (a APR não pode copiar o valor do token; só o tipo e o caminho).
 
-**Sinais:** “lê a pasta toda”; dump de arquivo grande; HTML com dado pessoal que não precisava.
+**Sinais:** “lê a pasta toda”; dump de arquivo grande; persiste payload cru da API; HTML com dado pessoal que não precisava.
 
 **Controle:** mínimo necessário; classificar dado; no HTML da APR mascarar segredo (`sk-…REDACTED`).
 

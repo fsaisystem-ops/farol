@@ -71,12 +71,21 @@ Pesa: MCP06, MCP10, MCP05, MCP09, MUST-02.
 
 ---
 
-## 2. Dados (PDF, extração, scrape, xlsx)
+## 2. Dados (PDF, extração, scrape, API, xlsx)
 
 Pesa: MCP06, MCP10, MCP05, MCP04, MCP09.
 
+Fonte de fora é a mesma: PDF, página, planilha **ou resposta de API**. A IA lê o payload como recado. A Microsoft chama isso de injeção indireta e de contaminação da fonte.
+
+Duas perguntas obrigatórias nesta lente (além da tabela):
+
+1. **Leitura (MCP06).** O recado diz que texto de fora (PDF, HTML, JSON da API) é dado, não ordem? Se pedir para furar a regra, ignora?
+2. **Gravação (MCP10).** Persiste só o campo (título, valor, data, id) ou o pacote inteiro (HTML, PDF cru, JSON da API)? Pacote inteiro → marcar e mandar gravar o campo.
+
 | Problema | O que quebra | Tratar |
 |---|---|---|
+| Resposta de API lida como ordem | O JSON manda a IA mudar pasta, abrir URL, inventar valor | Mesmo delimitador do PDF: corpo da API = dado |
+| Grava o JSON/HTML/PDF cru | Lixo e PII entram na nossa base e voltam em outro chat | Persistir campo; payload cru só se a pessoa pediu e com prazo |
 | `extract.txt` junta metadado + corpo | Injeção no começo do extrato | Corpo da página separado de metadado/XMP/anotação |
 | Split-view PDF (25 gaps documentados 2026) | Página ≠ texto extraído (`/ActualText`, fonte, ordem de leitura) | Skill deve admitir divergência; item crítico confere a página (print) |
 | Extrato inteiro no chat / no subagente | PII, edital, e a injeção viaja | Ler no disco por partes; subagente sem o extrato inteiro |
