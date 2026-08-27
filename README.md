@@ -1,5 +1,7 @@
 # Segurança de skills
 
+![Agente de IA conferindo um recado escrito](banner.jpg)
+
 Você vai criar uma skill. Antes de dizer que ela está pronta, esta pasta manda parar, ler o arquivo e dizer o que pode dar ruim — e o que muda no seu dia se você aplicar a correção.
 
 Uma skill é um recado escrito para o agente. Se o recado manda guardar senha, abrir qualquer site ou obedecer o que estiver num PDF, o agente faz. Esta skill lê esse recado, cruza com uma lista de falhas (curso de segurança da Microsoft) e grava um HTML.
