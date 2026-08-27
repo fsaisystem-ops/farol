@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>APR — __SKILL_NAME__</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --paper:#EEF2F0; --paper-raised:#FFFFFF; --paper-muted:#F6F9F7;
+  --ink:#0E1A18; --ink-soft:#51635E; --line:#D5DFDA; --line-strong:#B3C2BB;
+  --brand:#0A3D39; --brand-ink:#E8F5F2; --accent:#0E7A70; --accent-soft:#D9F0EC;
+  --ok:#1F7A4A; --ok-soft:#E1F5E8;
+  --crit:#8B1E18; --crit-soft:#F8E4E2;
+  --bad:#B03A32; --bad-soft:#FCECEA;
+  --warn:#9A6A10; --warn-soft:#FBF1DB;
+  --info:#1F4E79; --info-soft:#E4EEF8;
+  --pending:#5A6A70; --pending-soft:#E8EEF0;
+  --font-display: Georgia, "Iowan Old Style", Palatino, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+  --shadow: 0 1px 2px rgba(14,26,24,.06), 0 8px 24px rgba(14,26,24,.06);
+  --radius:12px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--font-body)}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:24px 20px 64px}
+header.hero{
+  background:var(--brand);color:var(--brand-ink);border-radius:var(--radius);
+  padding:28px 28px 22px;box-shadow:var(--shadow);
+}
+header.hero .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+header.hero h1{font-family:var(--font-display);font-size:28px;line-height:1.2;margin:6px 0 10px;font-weight:600}
+header.hero .sub{opacity:.9;max-width:78ch}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:18px}
+.meta-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px 12px}
+.meta-card .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.06em;opacity:.7}
+.meta-card .val{font-weight:600;margin-top:2px;word-break:break-word}
+.counts{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;font-size:13px;border:1px solid var(--line);background:var(--paper-raised)}
+.chip b{font-variant-numeric:tabular-nums}
+.chip.critico{background:var(--crit-soft);border-color:#e0a8a4;color:var(--crit)}
+.chip.alto{background:var(--bad-soft);border-color:#e8b4b0;color:var(--bad)}
+.chip.medio{background:var(--warn-soft);border-color:#e8d7a0;color:var(--warn)}
+.chip.baixo{background:var(--pending-soft);color:var(--pending)}
+.chip.atende{background:var(--ok-soft);border-color:#b7ddc4;color:var(--ok)}
+section h2{font-family:var(--font-display);font-size:22px;margin:28px 0 12px}
+.lead{color:var(--ink-soft);max-width:78ch;margin:0 0 16px}
+.card{
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin:0 0 12px;box-shadow:var(--shadow);
+}
+.card-top{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.badge{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.badge.critico{background:var(--crit-soft);color:var(--crit)}
+.badge.alto{background:var(--bad-soft);color:var(--bad)}
+.badge.medio{background:var(--warn-soft);color:var(--warn)}
+.badge.baixo{background:var(--pending-soft);color:var(--pending)}
+.badge.atende{background:var(--ok-soft);color:var(--ok)}
+.badge.id{background:var(--accent-soft);color:var(--accent)}
+.card h3{margin:6px 0 8px;font-size:18px}
+.card p{margin:0 0 8px}
+.card .lbl{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-top:10px}
+.prova{font-size:13px;background:var(--paper-muted);border-radius:8px;padding:8px 10px;margin:4px 0;white-space:pre-wrap}
+.prova code{font-family:var(--font-mono);font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--paper-raised);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--brand);color:var(--brand-ink);font-weight:600}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+ol.plano{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 16px 36px;box-shadow:var(--shadow)}
+ol.plano li{margin:0 0 10px}
+footer{margin-top:36px;font-size:12px;color:var(--ink-soft);max-width:78ch}
+@media print{
+  body{background:#fff}
+  header.hero{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,table,ol.plano{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">Análise de risco da skill</div>
+  <h1>APR — skill __SKILL_NAME__</h1>
+  <p class="sub">O que esta skill pode quebrar na prática, e o que mudar no arquivo. A lista de riscos é a da Microsoft (MCP). O texto é para quem opera a skill.</p>
+  <div class="meta-grid">
+    <div class="meta-card"><div class="lbl">Skill</div><div class="val">__SKILL_NAME__</div></div>
+    <div class="meta-card"><div class="lbl">Pasta</div><div class="val">__SKILL_PATH__</div></div>
+    <div class="meta-card"><div class="lbl">Data</div><div class="val">__DATE__</div></div>
+    <div class="meta-card"><div class="lbl">Arquivos lidos</div><div class="val">__FILES__</div></div>
+  </div>
+</header>
+
+<div class="counts">
+  <span class="chip critico">Crítico <b>__N_CRITICO__</b></span>
+  <span class="chip alto">Alto <b>__N_ALTO__</b></span>
+  <span class="chip medio">Médio <b>__N_MEDIO__</b></span>
+  <span class="chip baixo">Baixo <b>__N_BAIXO__</b></span>
+  <span class="chip atende">Atende <b>__N_ATENDE__</b></span>
+</div>
+
+<section>
+  <h2>O que a skill faz</h2>
+  <p class="lead">__RESUMO_SKILL__</p>
+</section>
+
+<section>
+  <h2>Área e canais ocultos</h2>
+  <p class="lead">__AREAS__</p>
+  <p class="lead">PDF, imagem, logo, print, HTML da loja e até o nome do arquivo podem carregar recado escondido. Abaixo: o que pega nesta skill.</p>
+__CARDS_LENTE__
+</section>
+
+<section>
+  <h2>O que não pode faltar</h2>
+  <p class="lead">Quatro regras da Microsoft. Aqui: como elas aparecem nesta skill — senha no arquivo, agir sem perguntar, conexão nova no silêncio, sessão copiada.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>A regra</th>
+        <th>Nível</th>
+        <th>Aqui</th>
+      </tr>
+    </thead>
+    <tbody>
+__TABELA_MUST__
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Os 10 riscos, nesta skill</h2>
+  <p class="lead">Um cartão por item da lista Microsoft. Nenhum ID fica de fora. O texto diz o que acontece aqui, não a definição do curso.</p>
+__CARDS_MCP__
+</section>
+
+<section>
+  <h2>O que mais pega</h2>
+  <p class="lead">Token passado adiante, sessão reusada, agir no lugar da pessoa sem ela aceitar, ferramenta que muda depois, filtro de conteúdo. Só o que esta skill toca. Se não toca, um cartão diz isso.</p>
+__CARDS_EXTRA__
+</section>
+
+<section>
+  <h2>O que fazer (prioridade)</h2>
+  <p class="lead">Só o que muda o arquivo. Pior primeiro. Não aplicar até a pessoa mandar.</p>
+  <ol class="plano">
+__PLANO__
+  </ol>
+</section>
+
+<footer>
+  Fonte: Microsoft MCP for Beginners · translations/pt-BR/02-Security (README, mcp-security-controls-2025, mcp-security-best-practices-2025, mcp-best-practices, azure-content-safety). Cópia local em references/ desta skill. Material traduzido automaticamente (Co-op Translator); o original em inglês no repositório Microsoft é a fonte autorizada.
+</footer>
+</div>
+</body>
+</html>
