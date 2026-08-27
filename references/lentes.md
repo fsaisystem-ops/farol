@@ -71,21 +71,23 @@ Pesa: MCP06, MCP10, MCP05, MCP09, MUST-02.
 
 ---
 
-## 2. Dados (PDF, extração, scrape, API, xlsx)
+## 2. Dados (qualquer extração)
 
 Pesa: MCP06, MCP10, MCP05, MCP04, MCP09.
 
-Fonte de fora é a mesma: PDF, página, planilha **ou resposta de API**. A IA lê o payload como recado. A Microsoft chama isso de injeção indireta e de contaminação da fonte.
+Se a skill **puxa texto de fora**, a fonte é a mesma: a IA lê como recado. A Microsoft chama de injeção indireta e de contaminação da fonte. Não importa o cano.
+
+Exemplos de cano: PDF, página, scrape, API, planilha, CSV, XML, e-mail, anexo, banco, pasta de arquivos, zip, Drive, webhook, RSS, log, OCR, print, áudio transcrito, resultado de outra ferramenta/MCP, RAG.
 
 Duas perguntas obrigatórias nesta lente (além da tabela):
 
-1. **Leitura (MCP06).** O recado diz que texto de fora (PDF, HTML, JSON da API) é dado, não ordem? Se pedir para furar a regra, ignora?
-2. **Gravação (MCP10).** Persiste só o campo (título, valor, data, id) ou o pacote inteiro (HTML, PDF cru, JSON da API)? Pacote inteiro → marcar e mandar gravar o campo.
+1. **Leitura (MCP06).** O recado diz que **tudo que veio de fora** é dado, não ordem? Se pedir para furar a regra, ignora?
+2. **Gravação (MCP10).** Persiste só o campo (título, valor, data, id) ou o pacote inteiro (HTML, PDF cru, JSON, e-mail, dump)? Pacote inteiro → marcar e mandar gravar o campo.
 
 | Problema | O que quebra | Tratar |
 |---|---|---|
-| Resposta de API lida como ordem | O JSON manda a IA mudar pasta, abrir URL, inventar valor | Mesmo delimitador do PDF: corpo da API = dado |
-| Grava o JSON/HTML/PDF cru | Lixo e PII entram na nossa base e voltam em outro chat | Persistir campo; payload cru só se a pessoa pediu e com prazo |
+| Qualquer extração lida como ordem | PDF, HTML, JSON, e-mail, CSV, OCR, dump de pasta: a IA obedece o cano | Delimitador: veio de fora = dado. Lista os canos que a skill usa |
+| Grava o pacote cru | Lixo e PII entram na nossa base e voltam em outro chat | Persistir campo; payload cru só se a pessoa pediu e com prazo |
 | `extract.txt` junta metadado + corpo | Injeção no começo do extrato | Corpo da página separado de metadado/XMP/anotação |
 | Split-view PDF (25 gaps documentados 2026) | Página ≠ texto extraído (`/ActualText`, fonte, ordem de leitura) | Skill deve admitir divergência; item crítico confere a página (print) |
 | Extrato inteiro no chat / no subagente | PII, edital, e a injeção viaja | Ler no disco por partes; subagente sem o extrato inteiro |
