@@ -66,10 +66,17 @@ O texto do relatório é em português do Brasil. Não cola a tradução do curs
 
 ## Ver em um minuto
 
-Na pasta do Farol, no terminal:
+Na pasta do Farol, no terminal. São dois comandos, um de cada vez.
+
+Varredura (só lê a pasta):
 
 ```text
 python scripts/varrer.py examples/skill-vulneravel
+```
+
+Teste:
+
+```text
 python -m pytest tests/ -q
 ```
 
