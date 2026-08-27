@@ -1,2 +1,4 @@
 /apr-seguranca.html
 docs/superpowers/
+__pycache__/
+*.pyc
