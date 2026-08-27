@@ -1,6 +1,6 @@
 # Escrita humana (cópia local)
 
-Cópia da skill `escrita-humana`, **dentro** de `seguranca-skills`. Esta pasta sozinha basta: zip, outro PC, outro Grok. Não depende de `~/.grok/skills/escrita-humana`.
+Cópia da skill `escrita-humana`, **dentro** do Farol. Esta pasta sozinha basta: zip, outro PC, outro Grok. Não depende de `~/.grok/skills/escrita-humana`.
 
 Lei. Vale em todo texto desta APR (HTML e chat). Não é opcional. Não depende do assunto.
 

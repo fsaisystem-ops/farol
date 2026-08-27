@@ -1,14 +1,14 @@
 ---
-name: seguranca-skills
+name: farol
 description: >
   Use when creating or editing a Grok skill, when reviewing a skill's
   security, when the user wants análise preliminar de riscos, APR HTML,
-  segurança de skill, or runs /seguranca-skills. Reads the target skill
+  segurança de skill, farol, or runs /farol. Reads the target skill
   against Microsoft MCP for Beginners 02-Security (OWASP MCP Top 10) and
   writes apr-seguranca.html. Do not skip this when scaffolding a new skill.
 ---
 
-# Segurança de skills (APR HTML)
+# Farol — segurança de skills (APR HTML)
 
 Quando criar, editar ou revisar uma skill, **antes** de dizer que ela está pronta: ler o catálogo Microsoft desta pasta, analisar a skill alvo, gravar o HTML. Não aplicar correção até a pessoa mandar.
 
