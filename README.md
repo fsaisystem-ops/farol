@@ -4,7 +4,6 @@ Você vai criar uma skill. Antes de dizer que ela está pronta, esta pasta manda
 
 Uma skill é um recado escrito para o agente. Se o recado manda guardar senha, abrir qualquer site ou obedecer o que estiver num PDF, o agente faz. Esta skill lê esse recado, cruza com uma lista de falhas (curso de segurança da Microsoft, Top 10 MCP) e grava um HTML: o que pega, o quão grave, o que mudar no arquivo.
 
-O texto do relatório é em português do Brasil, frase de trabalho. Não cola a tradução do curso no cartão.
 
 ## O que ela faz
 
