@@ -1,5 +1,7 @@
 # Farol
 
+> Link do Artigo: https://medium.com/@fsai.system/o-recado-extra-que-a-ia-obedece-3acc63d12a80
+
 ![Agente de IA conferindo um recado escrito](banner.jpg)
 
 Criamos skill para uma ação. Às vezes o recado traz junto coisa que não pedimos — e a IA obedece. O Farol lê essa skill e mostra o que pode comprometer nosso sistema e nossa IA. Sem isso, “pronto” e o furo vão no mesmo arquivo.
